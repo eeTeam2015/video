@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>管理后台</title>
+    <!--导入layui css文件-->
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css">
+    <!--导入layui js文件-->
+    <script src="/static/plugins/layui/layui.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script>
+        layui.config({
+            base: '/static/plugins/layui/lay/modules/'
+        }).use(['layer','form',"element"]);
+        
+        $(function () {
+            $("#refresh-resource").click(function () {
+                //刷新资源
+                $.ajax({
+                    url: '/user/permission/update-permission-by-swagger',
+                    dataType: 'json',
+                    type:'get',
+                    success: function(){
+                        layer.msg("刷新成功");
+                    },
+                    error:function () {
+                        layer.msg("刷新失败!");
+                    }
+                });
+            })
+        });
+    </script>
+    <!--导入外部css-->
+    <link rel="stylesheet" href="/static/css/home/index.css">
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">电影分享系统管理后台</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <span th:text="${userName}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" id="refresh-resource">刷新资源</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a th:href="@{/logout}">退出</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree layui-inline" style="margin-right: 10px;" >
+                    <li th:each="menu:${menus}" class="layui-nav-item" >
+                        <a href="javascript:;" th:text="${menu.name}">用户管理</a>
+                        <dl class="layui-nav-child" th:each="child:${menu.child}">
+                            <dd><a th:href="${child.url}" th:target="main-body" th:text="${child.name}"></a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <iframe frameborder="0" name="main-body" href="javascript:;" style="margin: 0px;height: 100%;width: 100%;display: block;"></iframe>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © 中原工学院软件学院 由xgp、tbs开发
+    </div>
+    </div>
+</body>
+</html>

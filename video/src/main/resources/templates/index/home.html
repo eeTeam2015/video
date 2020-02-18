@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:with="
+      version=${#dates.createNow().getTime()},
+      prourl=${#request.getScheme() + '://' + #request.getServerName() + ':' + #request.getServerPort() + #request.getContextPath() + '/'},
+      proname=${#request.getContextPath()},
+      pageurl=@{/xl/index.html}"
+>
+<head>
+    <base th:href="${prourl}">
+    <title>首页</title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+    <!--=====================CSS_Link===========================-->
+    <!--右侧排行推荐-->
+    <link th:href="@{/static/plugins/paihang/css/lanrenzhijia.css(v=${version})}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/static/css/index/home.css(v=${version})}" type="text/css" rel="stylesheet" />
+
+    <!--=====================JS_Link===========================-->
+    <script type="text/javascript">
+        function updateFilmSize() {
+            var w = $(".col-sm-8").width() / 6;
+            var isLi = false;
+            if ($(".col-sm-8").width() < 500) {
+                w = $(".col-sm-8").width() / 3;
+                isLi = true;
+            }
+            w = parseInt(w - 0.5);
+            $(".mox ul li").css("width", w + "px");
+            var h = (w * 160) / 115;
+            $(".t_img").css("height", h + "px");
+            if(isLi){
+                $(".case").css("height", "auto");
+                $(".case").css({"overflow":"hidden"});
+            }else {
+                $(".case").each(function (index,ele) {
+                    $(ele).css("height", ($(".mox").eq(index).height()) + "px");
+                });
+            }
+        }
+
+        $(document).ready(function(){
+            $(".case ul li a").each(function(i){
+                $(this).hover(function(){
+                    $(this).parent().find(".tips").addClass("hover");
+                    $(this).parent().addClass("lihover");
+                },function(){
+                    $(this).parent().find(".tips").removeClass("hover");
+                    $(this).parent().removeClass("lihover");
+                });
+            });
+            updateFilmSize();
+            $(window).resize(function(){
+                updateFilmSize();
+            });
+        });
+    </script>
+</head>
+<body>
+<div th:replace="pub/head"/>
+<div class="container" style="margin-top: 50px;">
+    <!--滚动banner-->
+    <div th:replace="pub/ad_banner"/>
+    <div class="row">
+        <div  th:if="${filmTuijian.size()!=0}" class="col-sm-8">
+            <div th:each="list:${filmTuijian}" class="mox">
+                <h5><span th:text="'最新'+${list.get(0).cataLogName}+'推荐'"></span><a style="text-decoration:none;color:white;margin-right:10px;cursor:pointer;float: right;" th:href="@{xl/index.html(cataLogId=${list.get(0).cataLogId})}">更多</a></h5>
+                <ul>
+                    <li th:each="li:${list}" class="float-left">
+                        <a th:href="@{xl/detail.html(filmId=${li.id})}"><div class="t_img" th:title="${li.name}"><img class="lazy rounded img-fluids" th:data-original="${li.image}"/></div></a>
+                        <div class="t_info">
+                            <p style="color:#00AFE4;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" th:text="${li.name}"></p>
+                            <p th:text="${li.typeName+'-'+li.onDecade}"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:if="${filmPaiHang.size()!=0}" class="col-sm-4">
+            <div th:each="list:${filmPaiHang}" class="case">
+                <ul>
+                    <h5 th:text="'最新'+${list[0].cataLogName}+'排行榜'"></h5>
+                    <li th:each="li,liStat:${list}">
+                        <span th:if="${liStat.index<=2}" class="ph1" th:text="${liStat.index+1}"></span>
+                        <span th:if="${liStat.index>2}" class="ph" th:text="${liStat.index+1}"></span>
+
+                        <a th:href="@{xl/detail.html(filmId=${li.id})}" target="_blank" th:title="${li.name}">
+                            <span th:if="${li.name.length()>=16}" th:text="${#strings.substring(li.name,0,16)}"></span>
+                            <span th:if="${li.name.length()<16}" th:text="${#strings.substring(li.name,0,li.name.length())}"></span>
+                            <span style="float: right;margin-right: 10px;" th:text="${#dates.format(li.updateTime,'MM-dd')}"></span>
+                        </a>
+
+                        <div class="tips">
+                            <div class="tipscont"><img th:src="${li.image}" style="border:1px solid #ddd;padding: 4px;background: white;" width="200px" height="288px" th:alt="${li.name}"/></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="pub/footer"/>
+</body>
+</html>

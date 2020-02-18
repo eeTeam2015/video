@@ -1,0 +1,631 @@
+@charset "UTF-8";
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-family: '微软雅黑';
+}
+
+body {
+    background: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+#bdshare_weixin_qrcode_dialog_qr table {
+    width: auto !important;
+}
+
+.container {
+    background: #fff;
+    margin-top: 50px;
+}
+
+.user-box {
+    width: 1000px;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+    background: #fff;
+}
+
+.model {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+/*影片信息*/
+.view {
+    float: left;
+    width: 750px;
+    background: #fff;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.wz {
+    height: 38px;
+    line-height: 38px;
+    padding: 0 10px;
+    color: #8E8E8E;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: #dcdfe2;
+}
+
+.wz a, .wz a:visited {
+    color: #8E8E8E;
+}
+
+/*图片*/
+.col-sm-4 .pic {
+    width: 100%;
+}
+
+.col-sm-4 .pic img {
+    width: 100%;
+    height: auto;
+}
+
+.col-sm-4 .pic a, .col-sm-4 .pic a:visited {
+    background: #444;
+    display: block;
+    width: 100%;
+    line-heighT: 44px;
+    heighT: 44px;
+    overflow: hidden;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+/*图片*/
+
+/*信息*/
+.col-sm-8 .info {
+    width:100%;
+    height: 100%;
+}
+
+.col-sm-8 .info h1 {
+    height: 36px;
+    font-size: 22px;
+    color: #3D4353;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.col-sm-8 .info ul {
+    height: 100%;
+    overflow: hidden;
+}
+
+.col-sm-8 .info li {
+    height: auto;
+    line-height: 26px;
+    color: #4a4a4a;
+}
+
+.pfen p, .view .info li span, .textdesc span, .textdesc a, .textdesc a:visited {
+    color: #03A9DD;
+}
+
+.textdesc {
+    line-height: 26px;
+    color: #4a4a4a;
+}
+
+.pfen {
+    position: relative;
+    margin-top: 4px;
+}
+
+.starscore {
+    width: 185px;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    padding-top: 2px;
+}
+
+.starA {
+    background: url("../../../img/filmDetail/star2.gif") repeat-x scroll 0 0 transparent;
+    display: block;
+    height: 28px;
+    width: 135px;
+    position: relative;
+    float: left;
+}
+
+.starB {
+    background: url("../../../img/filmDetail/star2.gif") repeat-x scroll 0 -29px transparent;
+    display: block;
+    height: 28px;
+    margin: 0;
+}
+
+.starC {
+    position: absolute;
+    height: 28px;
+    width: 135px;
+    top: 0;
+    left: 0;
+}
+
+.starC a {
+    width: 13.5px;
+    display: block;
+    float: left;
+    height: 28px;
+    margin: 0;
+}
+
+#filmStarScore, .star1 .no {
+    float: left;
+    font-weight: bold;
+    color: #FF6600;
+    font-family: Arial;
+    font-size: 23px;
+    padding-right: 4px;
+    line-height: 28px;
+    padding-left: 4px;
+}
+
+#filmStarScore i {
+    font-style: normal;
+    font-size: 18px;
+}
+
+.updatetps {
+    background: #F7F7F7;
+    border: 1px solid #E6E6E6;
+    color: #505050;
+    height: 28px;
+    line-height: 28px;
+    margin: 7px 0px;
+    width: 95%;
+    padding-left: 2%;
+}
+
+.clearfix {
+    display: inline-block;
+    zoom: 1;
+}
+
+#start {
+    height: 28px;
+}
+
+.s8 {
+    width: 108px;
+    float: left;
+}
+.info span{
+    color: #444;
+}
+/*信息*/
+
+/*云盘*/
+.infoad {
+    widtH: 100%;
+    height: 100%;
+}
+
+.skydrive {
+    background: #fff;
+    overflow: hidden;
+    padding: 10px;
+    height: 100%;
+}
+
+.skydrive p {
+    height: 24px;
+    line-height: 24px;
+}
+
+.skydrive ul {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.skydrive li {
+    float: left;
+    width: auto;
+    heighT: 32px;
+    margin: 5px 0px 5px 10px;
+    line-height: 32px;
+    padding-left: 32px;
+    padding-right: 8px;
+    background: url(../../img/filmDetail/g.gif) no-repeat 10px -122px;
+    border: 1px solid #EDEDED;
+}
+
+.cr {
+    clear: both;
+    height: 0px;
+    overflow: hidden;
+}
+
+/*内容*/
+.endpage {
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.ulike {
+    clear: both;
+}
+
+.ulike .title {
+    height: 40px;
+    line-height: 40px;
+    color: #404554;
+}
+
+.ulike .title span {
+    float: left;
+    padding-right: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*猜你喜欢图片*/
+.imglist {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+
+.imglist li {
+    height: 166px;
+}
+
+.img-list li {
+    overflow: hidden;
+    float: left;
+    margin: 0px 4px;
+}
+
+.img-list li h5 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+}
+
+.play-img, .p {
+    width: 100%;
+    height: 90%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: 2px;
+    border: 1px solid #DFDFDF;
+}
+
+.play-img img, .p img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.play-img i, .play-img em, .p em, .p i {
+    width: 76px;
+    height: 20px;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+}
+
+.play-img em, .p em {
+    widtH: 100%;
+    line-height: 20px;
+    font-size: 12px;
+    left: 2px;
+    bottom: 2px;
+    padding: 0 5px;
+    text-align: right;
+    z-index: 2;
+    color: #fff;
+    white-space: nowrap;
+    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/play-img.png');
+}
+
+.mox {
+    clear: both;
+    margin-top: 10px;
+    padding: 7px;
+}
+
+.mox .title {
+    height: 34px;
+    line-height: 34px;
+    padding: 0 10px;
+    border-bottom: 1px solid #f2f2f2;
+    color: #3E4454;
+    overflow: hidden;
+}
+
+.mox .title p {
+    float: right;
+    background: url("../../../img/filmDetail/g.gif") no-repeat 0 -74px;
+    padding-left: 12px;
+}
+
+.mox .title span {
+    float: left;
+    font-size: 16px;
+}
+
+.mox .title span img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.ndownlist{
+    background: white;
+}
+
+.ndownlist ul {
+    padding: 6px 6px;
+    height: auto;
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+
+.ndownlist li {
+    height: auto;
+    border-bottom: 1px solid #EBE6ED;
+    line-height: 26px;
+    overflow: hidden;
+}
+
+.ndownlist li i {
+    display: block;
+    float: left;
+    width: 30px;
+    text-align: center;
+}
+
+.ndownlist li i input {
+    vertical-align: middle;
+}
+
+.ndownlist p {
+    float: left;
+    padding-left: 10px;
+    width: 570px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    height: 30px;
+    margin-bottom: 0px;
+}
+
+script {
+    display: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.ndownlist p a, .downlist p a:visited {
+    color: #6B6E75;
+}
+
+.ndownlist span {
+    float: right;
+}
+
+.ndownlist span a.d5, .downlist span a.d5:visited {
+    background: #00b384;
+}
+
+.ndownlist span a, .downlist span a:visited {
+    margin-right: 6px;
+    color: #fff;
+    display: inline-block;
+    width: 38px;
+    height: 26px;
+    line-height: 26px;
+    background: #FF984D;
+    text-align: center;
+}
+
+.ndownlist span a.d2, .downlist span a.d2:visited {
+    background: #00b0f0;
+}
+
+.ndownlist span a.d3, .downlist span a.d3:visited {
+    background: #82abba;
+}
+
+.ndownlist span a.d4, .downlist span a.d4:visited {
+    background: #a2b4ba;
+}
+
+.ndownlist .ckbox a, .downlist .ckbox a:visited {
+    display: inline-block;
+    width: 133px;
+    height: 26px;
+    line-heighT: 26px;
+    text-align: center;
+    background: url("../../../img/filmDetail/i.png") no-repeat 0 -150px;
+    margin: 0 10px 0 0;
+    color: #464646;
+}
+
+.juqing .title, .juqing {
+    border: none;
+    padding: 10px 9px;
+}
+
+.juqing .title span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.endtext {
+    line-height: 26px;
+    color: #878787;
+}
+
+/*猜你喜欢图片*/
+/*内容*/
+/*云盘*/
+/*影片信息*/
+
+/*评分*/
+.fen {
+    width: 100%;
+    height: 30px;
+    line-height: 32px;
+}
+
+/*评分*/
+
+/*按钮*/
+.btn {
+    display: block;
+    padding: 1px 7px;
+    background: #51A851;
+    margin-right: 5px;
+    color: white;
+}
+
+.btn:hover {
+    background: dodgerblue;
+    color: white;
+}
+
+.thunder {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.thunder li {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    list-style: none;
+    padding: 7px 6px;
+}
+
+/*按钮*/
+
+/*播放器设置*/
+#a1 {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: 500px;
+    float: left;
+}
+
+/*播放器设置*/
+
+/*在线播放标题*/
+.online {
+    border: 1px solid #f2f2f2;
+    clear: both;
+    margin-top: 10px;
+    padding: 7px;
+    height: auto;
+    overflow: hidden;
+}
+
+.online .title {
+    height: 34px;
+    line-height: 34px;
+    border-bottom: 1px solid #f2f2f2;
+    color: #3E4454;
+    overflow: hidden;
+}
+
+.online .title span {
+    float: left;
+    font-size: 16px;
+}
+
+.online .title span img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.online p {
+    margin-bottom: 0px;
+}
+.col-sm-6 p{
+    margin-bottom: 0px;
+    overflow: hidden;
+}
+/*在线播放标题*/
+
+/*集数显示框*/
+.mad-box-form {
+    width: 100%;
+    height: auto;
+}
+.mad-a {
+    display: block;
+    float: left;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: #ccc;
+    margin-top: 5px;
+    margin-right: 5px;
+    color: #444;
+}
+
+.mad-a:hover {
+    background: #517FAF;
+    border: 1px solid #517FAF;
+    color: #fff;
+}
+/*集数显示框*/
+/*播放器插件*/
+.player {
+    height: auto;
+    background-color: black;
+}
+
+.player .content {
+    height: 660px;
+}
+.title-icon{
+    background-image: url('../../img/filmDetail/xzdd.jpg');
+    background-color: white;
+    background-repeat: no-repeat;
+    padding-left: 25px;
+    background-position: 0px 6px;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.title-con{
+    color: #00B384;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: right;
+}

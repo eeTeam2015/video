@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>目录</title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+    <link th:href="@{/static/css/manager/catalog.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div style="width:50%;float:left;height: auto;overflow: hidden;">
+                <span>一级分类</span><br/>
+                <div contenteditable="true" class="catalog_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_CataLog_btn btn">添加</a><br/><br/>
+
+                <span>二级子分类</span>
+                <select class="cataLogId">
+                   <option th:each="cataLogList_var:${cataLogList}" th:value="${cataLogList_var.id}" th:text="${cataLogList_var.name}"></option>
+                </select>
+                <br/>
+                <div contenteditable="true" class="subClass_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_SubClass_btn btn">添加</a><br/><br/>
+
+                <span>类型</span><br/>
+                <select class="cataLogId_subClass">
+                    <option th:each="cataLogList_var:${cataLogList}" th:value="${cataLogList_var.id}" th:text="${cataLogList_var.name}"></option>
+                </select>
+                <select class="subClassId"></select><br/>
+                <div contenteditable="true" class="type_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_Type_btn btn">添加</a><br/><br/>
+                <br/>
+
+                <h2><span style="color:blue;">一级目录</span>--><span style="color:green;">二级目录</span>--><span style="color:#fd5c11;">类型</span></h2>
+                <span th:each="list:${cataLogList}">
+                    <span style="color:blue;" th:text="${list.name}"></span>
+                    <br/>
+                    <span th:if="${list.subClassList!=null}" th:each="li:${list.subClassList}">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;" th:text="${li.name}"></span>-->
+                        <span th:each="l:${typeList}">
+                            <span th:if="${li.id==l.subclassId}" style="color:#fd5c11;" th:text="${l.name}"></span>
+                        </span>
+                        <br/>
+                    </span>
+                    <br/>
+                </span>
+            </div>
+            <div style="width:50%;float:left;height: auto;overflow: hidden;">
+
+                <span>地区</span><br/>
+                <div contenteditable="true" class="loc_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_Loc_btn btn" >添加</a><br/><br/>
+
+
+                <span>级别</span><br/>
+                <div contenteditable="true" class="level_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_Level_btn btn">添加</a><br/><br/>
+
+
+                <span>年代</span><br/>
+                <div contenteditable="true" class="decade_name" style="display: inline-block;"></div>
+                <a href="javascript:;" class="add_Decade_btn btn">添加</a><br/><br/>
+
+
+                <h2>地区-->级别-->年代</h2>
+                <br/>
+                <span>地区--></span>
+                <span th:each="locList_list:${locList}" th:text="${locList_list.name}+'&nbsp;&nbsp;&nbsp;'"></span>
+                <br/>
+                <span>级别--></span>
+                <span th:each="levelList_list:${levelList}" th:text="${levelList_list.name}+'&nbsp;&nbsp;&nbsp;'"></span>
+                <br/>
+
+                <span>年代--></span><br/>
+                <span th:each="decadeList_list:${decadeList}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  th:text="${decadeList_list.name}"></span>
+                    <br/>
+                </span>
+
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".nav-title").click(function () {
+            $(this).parent().find(".nav2-ul").toggle();
+            if($(this).find(".nav-icon").css("background-position")=="-144px -27px"){
+                $(this).find(".nav-icon").css("background-position","-92px -27px");
+            }else{
+                $(this).find(".nav-icon").css("background-position","-144px -27px");
+            }
+        });
+
+        $(".add_CataLog_btn").click(function () {
+            var catalog_name = $(".catalog_name").text();
+            if(catalog_name!=""){
+                $.ajax({
+                    url: "/catalog/manager/addCataLog.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "name=" + catalog_name,
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".add_SubClass_btn").click(function () {
+            var subClass_name = $(".subClass_name").text();
+            if(subClass_name!="") {
+                $.ajax({
+                    url: "/catalog/manager/addSubClass.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "cataLogId=" + $(".cataLogId").val() + "&name=" + $(".subClass_name").text(),
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".add_Type_btn").click(function () {
+            var type_name = $(".type_name").text();
+            if(type_name!=""){
+                $.ajax({
+                    url: "/catalog/manager/addType.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "subClassId=" + $(".subClassId").val() + "&name=" + $(".type_name").text(),
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".add_Loc_btn").click(function () {
+            var loc_name = $(".loc_name").text();
+            if(loc_name!=""){
+                $.ajax({
+                    url: "/catalog/manager/addLoc.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "name=" + $(".loc_name").text(),
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".add_Level_btn").click(function () {
+            var level_name = $(".level_name").text();
+            if(level_name!="") {
+                $.ajax({
+                    url: "/catalog/manager/addLevel.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "name=" + $(".level_name").text(),
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".add_Decade_btn").click(function () {
+            var decade_name = $(".decade_name").text();
+            if(decade_name!="") {
+                $.ajax({
+                    url: "/catalog/manager/addDecade.html",
+                    type: "POST",
+                    dataType: "json",
+                    data: "name=" + $(".decade_name").text(),
+                    success: backFunction,
+                    error:function (e) {
+                        if(e.responseJSON.status=='403'){
+                            alert(e.responseJSON.message+":你没有操作权限!");
+                        }else{
+                            alert(e.responseJSON.message);
+                        }
+                    }
+                });
+            }else{
+                alert("字段为空！");
+            }
+        });
+
+        $(".cataLogId_subClass").change(function () {
+            var catalog_id = $(this).val();
+            $.ajax({
+                url: "/video/manager/getSubClass.html",
+                type: "get",
+                dataType: "json",
+                data: "cataLogId=" + catalog_id,
+                success: function (data) {
+                    $(".subClassId").find("option").remove();
+                    var jss = data;
+                    for (var i = 0; i < jss.length; i++) {
+                        var op = "<option value='" + jss[i].id + "'>" + jss[i].name + "</option>";
+                        $(".subClassId").append($(op));
+                    }
+                },
+                error:function (e) {
+                    if(e.responseJSON.status=='403'){
+                        alert(e.responseJSON.message+":你没有操作权限!");
+                    }else{
+                        alert(e.responseJSON.message);
+                    }
+                }
+            });
+        });
+
+        $.ajax({
+            url: "/video/manager/getSubClass.html",
+            type: "get",
+            dataType: "json",
+            data:"cataLogId=" + $(".cataLogId_subClass").val(),
+            success: function (data) {
+                var jss = data;
+                for (var i = 0; i < jss.length; i++) {
+                    var op1 = "<option value='" + jss[i].id + "'>" + jss[i].name + "</option>";
+                    $(".subClassId").append($(op1));
+                }
+            },
+            error:function (e) {
+                if(e.responseJSON.status=='403'){
+                    alert(e.responseJSON.message+":你没有操作权限!");
+                }else{
+                    alert(e.responseJSON.message);
+                }
+            }
+        });
+    });
+
+    function backFunction(data) {
+        if (data != "0") {
+            location.reload();
+        }
+    }
+</script>
+</body>
+</html>

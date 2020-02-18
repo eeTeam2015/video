@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ckplayer>
+	<style>
+		<cpath>bf.php?v=1.2</cpath>
+		<flashvars>{p->1}</flashvars>
+		<!--
+
+                                         1 1 1 1   1 1 1 1 1 1 2 2 2  2 2 2 2 2    2 2 3 3 3 3 3 3 3 3 3   3 4  4 4
+                          1 2 3 4 5 6 7 8 9 0 1 2 3   4 5 6 7 8 9 0 1 2  3 4 5 6 7    8 9 0 1 2 3 4 5 6 7 8   9 0  1 2
+
+        -->
+		<setup>
+			1,1,1,1,1,2,0,1,0,0,1,1,200,0,2,1,0,1,1,1,0,10,6,1,0,1,1000,0,0,0,0,1,1,1,1,1,1,250,0,90
+		</setup>
+		<pm_bg>0x000000,100,230,180</pm_bg>
+		<mylogo>logo.swf</mylogo>
+		<pm_mylogo>1,1,-100,-55</pm_mylogo>
+		<logo>null</logo>
+		<pm_logo>2,0,-100,20</pm_logo>
+		<pm_repc/>
+		<pm_spac>|</pm_spac>
+		<pm_fpac>file->f</pm_fpac>
+		<pm_advtime>2,0,-110,10,0,300,0</pm_advtime>
+		<pm_advstatus>1,2,2,-200,-40</pm_advstatus>
+		<pm_advjp>1,0,2,2,-100,-40</pm_advjp>
+		<pm_padvc>2,0,-10,-10</pm_padvc>
+		<pm_advms>2,2,-46,-56</pm_advms>
+		<pm_zip>1,1,-20,-8,1,0,0</pm_zip>
+		<pm_advmarquee>1,2,50,-60,50,18,0,0x000000,50,0,20,1,15,2000</pm_advmarquee>
+		<mainfuntion/>
+		<flashplayer/>
+		<calljs>ckplayer_status,ckadjump,playerstop,ckmarqueeadv</calljs>
+		<cpt>time.swf,2,0,-105,50,0,0</cpt>
+		<cpt>downloadspeeds.swf,2,2,-300,-28,2,0</cpt>
+		<cpt>qxdchange.swf,2,2,-180,-137,2,0</cpt>
+	</style>
+</ckplayer>

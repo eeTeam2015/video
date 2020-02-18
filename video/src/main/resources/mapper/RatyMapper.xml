@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.RatyMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.Raty">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="en_time" jdbcType="VARCHAR" property="enTime" />
+    <result column="film_id" jdbcType="VARCHAR" property="filmId" />
+    <result column="score" jdbcType="VARCHAR" property="score" />
+  </resultMap>
+
+</mapper>

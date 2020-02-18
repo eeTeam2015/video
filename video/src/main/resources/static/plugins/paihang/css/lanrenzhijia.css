@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* 代码整理：懒人之家 */
+
+
+* {
+	margin:0;
+	padding:0;
+}
+a, img {
+	border:0;
+}
+a{ color:#333; text-decoration:none;}
+/* case */
+.case {
+	width: 100%;
+	height: auto;
+	min-height: 456px;
+}
+.case ul{
+	margin-bottom: 0px;
+}
+.case li {
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 18px;
+	position: relative;
+	text-overflow: ellipsis;
+	background: url(../images/greenarrowright.gif) no-repeat -5px center;
+	border-radius: 0px;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.case li.lihover {
+	background:url(../images/greenarrowright.gif) no-repeat 10px center #F1F1F1;
+	border-radius:10px;
+}
+/* tips */
+.case .tips {
+	position:absolute;
+	top:-53px;
+	left:-200px;
+	width:182px;
+	height:123px;
+	visibility:hidden;
+	/*background:url(../images/tipbg.png) no-repeat;*/
+	opacity:0.0;
+	-moz-transition:all 0.5s ease;
+	-webkit-transition:all 0.5s ease;
+	-o-transition:all 0.5s ease;
+}
+.case .tips .tipscont {
+	width:100px;
+	/*text-align:center;
+	margin:10px 0 0 50px;*/
+}
+.case .hover {
+	visibility:visible;
+	top:-93px;
+	left:-200px;
+	opacity:1;
+}

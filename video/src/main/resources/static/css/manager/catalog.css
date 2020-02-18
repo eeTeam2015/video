@@ -1,0 +1,157 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    zoom: 1;
+    font-size: 12px;
+    font-family: '微软雅黑';
+}
+a{
+    text-decoration: none;
+    color:#444;
+}
+.catalog_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+
+.subClass_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+
+.type_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+
+.loc_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+
+.level_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+
+.decade_name {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #C3DDEC;
+    padding-left: 10px;
+    line-height: 25px;
+    outline: none;
+}
+/*box框架*/
+.box{
+    width: 1190px;
+    height:auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+.box-left{
+    width: 290px;
+    height: auto;
+    float: left;
+    overflow: hidden;
+}
+.box-right{
+    width: 900px;
+    height: auto;
+    float: right;
+    overflow: hidden;
+}
+/*box框架*/
+/*按钮*/
+.btn{
+    padding: 4px 8px;
+    border-radius:4px;
+    background: #efefef;
+    border:1px solid #cccccc;
+    text-decoration: none;
+    color:#444;
+    margin-right: 10px;
+    display: inline-block;
+}
+.btn:hover{
+    background: #1d94ff;
+    border:1px solid #1d94ff;
+    color:white;
+}
+/*按钮*/
+
+
+/*导航*/
+.nav-title{
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    cursor: pointer;
+
+}
+.nav-icon{
+    font-style: normal;
+    height: 100%;
+    width: 30px;
+    display: inline-block;
+    background: #fff url("static/img/pub/nav.jpg") -144px -27px no-repeat;/*-143px -27px*/
+}
+.nav1-ul{
+    width:60%;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+.nav1-li{
+    width:100%;
+    height: auto;
+    overflow: hidden;
+}
+.nav2-ul{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.nav2-li{
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: center;
+}
+/*导航*/

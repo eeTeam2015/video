@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery+css3实现图片提示效果</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<link href="css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(".case ul li a").each(function(i){
+		$(this).hover(function(){
+			$(this).parent().find(".tips").addClass("hover");
+			$(this).parent().addClass("lihover");
+		},function(){
+			$(this).parent().find(".tips").removeClass("hover");
+			$(this).parent().removeClass("lihover");
+		});	
+	});
+	
+});
+</script>
+<div class="case">
+  <ul>
+    <li> <a href="http://www.lanrenzhijia.com" target="_blank">div+css布局限制图片最大宽度图片垂直居中(兼容IE6/IE7/IE8/FF)</a>
+      <div class="tips">
+        <div class="tipscont"><img src="images/smallda1a1ff8828722e330aa7e7d89e287db.jpg" width="100" height="100" alt="div+css布局限制图片最大宽度图片垂直居中(兼容IE6/IE7/IE8/FF)" /></div>
+      </div>
+    </li>
+    <li> <a href="http://www.lanrenzhijia.com" target="_blank">div+css布局通过样式来控制让图片垂直居中与水平居中显示</a>
+      <div class="tips">
+        <div class="tipscont"><img src="images/smallceec9a946b7af6d1e04944d6ddcc5799.jpg" width="100" height="100" alt="div+css布局通过样式来控制让图片垂直居中与水平居中显示" /></div>
+      </div>
+    </li>
+    <li> <a href="http://www.lanrenzhijia.com" target="_blank">div+css教程TOP排行榜或新闻列表最标准div css样式表代码写法</a>
+      <div class="tips">
+        <div class="tipscont"><img src="images/small37d7e19acbb85fd66d14589ea46a23a7.jpg" width="100" height="100" alt="div+css教程TOP排行榜或新闻列表最标准div css样式表代码写法" /></div>
+      </div>
+    </li>
+    <li> <a href="http://www.lanrenzhijia.com" target="_blank">div+css制作在IE6 上用absolute模拟fixed IE6浏览器定位层框不闪动</a>
+      <div class="tips">
+        <div class="tipscont"><img src="images/smalla4c7c67dec86de131924d9e69e745e18.jpg" width="100" height="100" alt="div+css制作在IE6 上用absolute模拟fixed IE6浏览器定位层框不闪动" /></div>
+      </div>
+    </li>
+    <li> <a href="http://www.lanrenzhijia.com" target="_blank">div+css制作非常实用的24款分页页码css代码</a>
+      <div class="tips">
+        <div class="tipscont"><img src="images/smallf1179c13ff068ff4b102b2b97852e960.jpg" width="100" height="100" alt="div+css制作非常实用的24款分页页码css代码" /></div>
+      </div>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

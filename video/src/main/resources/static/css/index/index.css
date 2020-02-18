@@ -1,0 +1,314 @@
+@charset "UTF-8";
+body{
+    background:#fff;
+}
+a:hover {
+    text-decoration: none;
+}
+a{
+    color: #444;
+}
+
+.pagination .active .page-link{
+    background-color: #57d2f2;
+    border-color: #57d2f2;
+}
+
+.filter-board{
+    width: 100%;
+    display: block;
+    height: auto;
+    overflow: hidden;
+}
+
+.filter-board .li-head{
+    font-weight: 600;
+}
+
+.filter-board .li-active{
+    background: #00AFE4;
+}
+
+.filter-board .li-active a{
+    color: white;
+}
+
+.filter-board .li-head,.filter-board .li-child{
+    float: left;
+    display: inline-block;
+    padding: 3px 8px;
+    text-align: center;
+}
+
+
+.user-box{
+    width:1000px;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+    background: #fff;
+}
+/*左侧*/
+.user-box-left{
+    width: 25%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+}
+.user-nav{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    background:#343a40;
+}
+.user-nav li{
+    width:100%;
+    height: 40px;
+    line-height: 40px;
+    padding-left:30%;
+    font-size: 14px;
+    color: white;
+}
+.user-nav a{
+    color:#444;
+}
+.user-nav li:hover{
+    background: #b5b5b5;
+    color: #343a40;
+}
+
+/*右侧*/
+.user-box-right{
+    width: 74%;
+    height:auto;
+    overflow: hidden;
+    float: right;
+}
+.user-nav-title{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left:30%;
+    color: white;
+}
+/*影片列表*/
+.film-list {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 0px;
+    border: 1px solid #ddd;
+}
+
+.film-list li {
+    list-style: none;
+    float: left;
+    overflow: hidden;
+    margin: 5px;
+}
+.film-list li img {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    border: 1px solid #ddd;
+}
+
+.note-left{
+    float: left;
+    width: 100%;
+    height: auto;
+}
+.film-info {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.film-info a {
+    color: #1d94ff;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.film-info p {
+    color: #A9A8A8;
+    margin-bottom: 0px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+
+/*右侧信息*/
+.info {
+    float: left;
+    width: 100%;
+}
+.info h2 {
+    height: 26px;
+    line-height: 26px;
+    color: #A4A4A4;
+}
+.info h2 a{
+    color: #2C89C6;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.info em,.info i{
+    font-style: normal;
+}
+
+.info .star{
+    height: 16px;
+    overflow: hidden;
+    width: 220px;
+    background: url("../../img/filmList/starr.gif") no-repeat;
+    display: block;
+    margin-bottom: 3px;
+}
+.info .star1 {
+    background-position: 0px -64px;
+}
+.info .star2 {
+    background-position: 0px -46px;
+}
+.info .star3 {
+    background-position: 0px -32px;
+}
+.info .star4 {
+    background-position: 0px -16px;
+}
+.info .star5 {
+    background-position: 0px -0px;
+}
+.info p {
+    color: #5E5E5E;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+.info span {
+    display: block;
+    height: auto;
+    overflow: hidden;
+}
+.info span a{
+    display: inline-block;
+    float: left;
+    width: 50px;
+    line-height: 21px;
+    height: 21px;
+    overflow: hidden;
+    margin-right: 8px;
+    color: white;
+    text-align: center;
+}
+.watch-btn{
+    border-radius: 4px;
+    background: #57d2f2;
+}
+.download-btn{
+    border-radius: 4px;
+    background: #FAD119;
+}
+/*影片列表*/
+
+/*页码样式*/
+.use-btn,.nouse-btn{
+    padding: 4px 8px;
+    display: inline-block;
+    border: 1px solid #343a40;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.use-btn{
+    background: #fff;
+    color:#444;
+}
+.nouse-btn{
+    background: #f2f2f2;
+    color:#ccc;
+}
+/*页码样式*/
+
+
+/*右侧检索*/
+.user-box-right-search{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.user-box-right-search ul{
+    margin-bottom: 0px;
+}
+.user-box-right-search li{
+    list-style: none;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.user-box-right-search-left{
+    width: auto;
+    height: 22px;
+    float: left;
+    line-height: 22px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+.user-box-right-search-right{
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+.user-box-right-search-right ul{
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.user-box-right-search-right ul li{
+    list-style: none;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-right: 5px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color:#444;
+}
+.user-box-right-search-right ul li:hover{
+    background: #343a40;
+    color:white;
+}
+
+/*检索*/
+
+/*空结果*/
+.mlist {
+    margin: 14px 17px 24px;
+    border: dashed #ddd;
+    border-width: 1px 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 16px 0 16px 3px;
+}
+.cr {
+    clear: both;
+    height: 0px;
+    overflow: hidden;
+}

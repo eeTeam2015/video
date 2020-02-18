@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VIP管理</title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+    <script th:src="@{/static/js/manager/vipManager.js}" ></script>
+    <link th:href="@{/static/css/manager/list.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<!--内容 START-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered  table-striped">
+                <thead class="thead-light">
+                <tr>
+                    <th>加油卡号</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="list:${vipCodes}">
+                        <td th:text="${list.code}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-info" id="create_code">生成</a><br/><br/>
+            <div>
+                <table class="table table-bordered  table-striped">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>加油卡号(请将下面生成的卡号加入到第三方支付的商品列表中)</th>
+                    </tr>
+                    </thead>
+                    <tbody id="create_code_new"></tbody>
+                </table>
+            </div>
+         </div>
+     </div>
+</div>
+<!--内容 END-->
+</body>
+</html>

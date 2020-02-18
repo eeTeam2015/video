@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.FilmMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.Film">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="actor" jdbcType="VARCHAR" property="actor" />
+    <result column="cata_log_name" jdbcType="VARCHAR" property="cataLogName" />
+    <result column="cata_log_id" jdbcType="VARCHAR" property="cataLogId" />
+    <result column="evaluation" jdbcType="DOUBLE" property="evaluation" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="is_use" jdbcType="INTEGER" property="isUse" />
+    <result column="loc_name" jdbcType="VARCHAR" property="locName" />
+    <result column="loc_id" jdbcType="VARCHAR" property="locId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="on_decade" jdbcType="VARCHAR" property="onDecade" />
+    <result column="resolution" jdbcType="VARCHAR" property="resolution" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="sub_class_name" jdbcType="VARCHAR" property="subClassName" />
+    <result column="sub_class_id" jdbcType="VARCHAR" property="subClassId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="is_vip" jdbcType="INTEGER" property="isVip" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.edu.zzti.common.model.Film">
+    <result column="plot" jdbcType="LONGVARCHAR" property="plot" />
+  </resultMap>
+
+</mapper>

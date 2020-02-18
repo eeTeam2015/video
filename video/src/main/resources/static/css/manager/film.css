@@ -1,0 +1,248 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    zoom: 1;
+    font-size: 12px;
+    font-family: '微软雅黑';
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+.input {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: rgba(195, 221, 236, 0.14);
+    line-height: 18px;
+    outline: none;
+    float: left;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.contentType {
+    width: 50%;
+    min-height: 100px;
+}
+
+.left-con {
+    width: 8.4%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    font-family: '微软雅黑';
+    padding: 0.8%;
+}
+
+.right-con {
+    width: 88%;
+    height: auto;
+    overflow: hidden;
+    float: right;
+    padding: 1%;
+    font-size: 14px;
+    font-family: '微软雅黑';
+}
+
+.film-info {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.film-info li {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #efefef;
+    list-style: none;
+}
+
+.fixSelect {
+    width: 212px;
+    height: 31px;
+    font-size: 14px;
+    font-family: '微软雅黑';
+    padding: 0px;
+}
+
+.btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #efefef;
+    border: 1px solid #cccccc;
+    text-decoration: none;
+    color: #444;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #1d94ff;
+    border: 1px solid #1d94ff;
+    color: white;
+}
+
+.title {
+    background: #efefef;
+}
+
+.longInput {
+    width: 50%;
+}
+
+.alert-box {
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #444;
+    margin-right: 10px;
+    border: 1px solid #F3B99E;
+    background: #F3D8D6;
+}
+
+.edit, .label-input {
+    display: none;
+}
+
+.show {
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: #444;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 14px;
+    font-family: '微软雅黑';
+}
+
+.label:hover .edit {
+    display: inline-block;
+}
+
+.zi_yuan_list {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.zi_yuan_list li {
+    list-style: none;
+    height: auto;
+    width: 18%;
+    float: left;
+    font-size: 12px;
+    border: none;
+    padding: 1%;
+    overflow: hidden;
+    font-family: '微软雅黑';
+    text-align: center;
+
+}
+
+.zi_yuan_list li .show {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0px;
+}
+
+.del {
+    color: #686868;
+    padding: 5px;
+    border: 1px #5B5B5B solid;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.file-pre img, .update-pre img {
+    max-width: 800px;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 160px;
+    border: 1px solid #dddddd;
+}
+
+/*box框架*/
+.box {
+    width: 1190px;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.box-left {
+    width: 290px;
+    height: auto;
+    float: left;
+    overflow: hidden;
+}
+
+.box-right {
+    width: 900px;
+    height: auto;
+    float: right;
+    overflow: hidden;
+}
+
+/*box框架*/
+/*导航*/
+.nav-title {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    cursor: pointer;
+
+}
+
+.nav-icon {
+    font-style: normal;
+    height: 100%;
+    width: 30px;
+    display: inline-block;
+    background: #fff url("../../img/pub/nav.jpg") -144px -27px no-repeat; /*-143px -27px*/
+}
+
+.nav1-ul {
+    width: 60%;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.nav1-li {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.nav2-ul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.nav2-li {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*导航*/

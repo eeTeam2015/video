@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:with="
+      version=${#dates.createNow().getTime()},
+      prourl=${#request.getScheme() + '://' + #request.getServerName() + ':' + #request.getServerPort() + #request.getContextPath() + '/'},
+      proname=${#request.getContextPath()},
+      pageurl=@{/xl/index.html}"
+>
+<head>
+    <base th:href="${prourl}">
+    <title th:text="${film.name}+'-'+${film.subClassName}+'-'+${film.typeName}"></title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+    <!--=====================CSS_Link===========================-->
+    <!--=====================JS_Link===========================-->
+    <script th:src="@{/static/js/download/base64.js(v=${version})}"></script>
+
+    <!--导入-->
+    <script>var sitePath = ''</script>
+    <script th:src="@{/static/js/download/function1.js(v=${version})}"></script>
+    <script type="text/javascript" th:src="@{/static/js/download/function2.js(v=${version})}"></script>
+    <!--导入-->
+
+    <!--评分插件-->
+    <script th:src="@{/static/js/detail/jquery.raty.min.js(v=${version})}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index/detail.css(v=${version})}">
+
+    <script th:inline="javascript"></script>
+
+    <script type="text/javascript">
+        window.prourl = "[[${prourl}]]";
+        window.filmId = "[[${film.id}]]";
+        window.filmSrc = Base64.decode("[[${src}]]");
+    </script>
+    <script type="text/javascript">
+
+        /**窗口变化重新计算大小*/
+        function updateFilmSize() {
+            var w = $(".player").width();
+            var h = (w * 3) / 4;
+            $(".player").css("height", h + "px");
+        }
+
+        $(document).ready(function(){
+            updateFilmSize();
+            $(window).resize(function(){
+                updateFilmSize();
+            });
+        });
+
+        function updateLikeImgSize() {
+            var w = $(".img-list").width() / 8;
+            if ($(".img-list").width() < 500) {
+                w = $(".img-list").width() / 3;
+            }
+            w = parseInt(w-8);
+            $(".img-list li").css("width", w + "px");
+            var h = (w * 160) / 115;
+            $(".img-list li").css("height", h + "px");
+        }
+
+        $(function(){
+            updateLikeImgSize();
+            updateFilmSize();
+            $(window).resize(function(){
+                updateLikeImgSize();
+                updateFilmSize();
+            });
+        });
+    </script>
+</head>
+<body>
+<!--头部-->
+<div th:replace="pub/head"/> 
+<div class="container" style="margin-top: 50px;" >
+
+    <!--滚动banner-->
+    <div th:replace="pub/ad_banner"/>
+
+    <div class="row" style="background: #dcdfe2;">
+        <div class="col">
+            <!--*当前位置:-->
+            <div class="wz">
+                当前位置: <a href="/">首页</a>
+                &nbsp;&nbsp;»&nbsp;&nbsp;<a th:href="@{/xl/index.html(cataLogId=${film.cataLogId})}" th:text="${film.cataLogName}"></a>
+                &nbsp;&nbsp;»&nbsp;&nbsp;<a th:href="@{/xl/index.html(cataLogId=${film.cataLogId},subClassId=${film.subClassId})}" th:text="${film.subClassName}"></a>
+                &nbsp;&nbsp;»&nbsp;&nbsp;<a th:href="@{/xl/index.html(cataLogId=${film.cataLogId},subClassId=${film.subClassId},typeId=${film.typeId})}" th:text="${film.typeName}"></a>
+                &nbsp;&nbsp;»&nbsp;&nbsp;<span th:text="${film.name}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-4" style="margin-top: 10px;margin-bottom: 10px;">
+                    <div class="pic">
+                        <img class="lazy" th:data-original="${film.image}" th:alt="${film.name}">
+                    </div>
+                </div>
+                <div class="col-sm-8" style="margin-top: 10px;margin-bottom: 10px;">
+                    <div class="info" style="background: #fff;padding: 10px;">
+                        <h1 th:text="${film.name}"></h1>
+                        <ul>
+                            <li>
+                                <span>上映年代：</span><span th:text="${film.onDecade}"></span>&nbsp;&nbsp;
+                                <span>状态：</span><span th:text="${film.status}"></span>
+                            </li>
+                            <li>
+                                <span>类型：</span>
+                                <a th:href="@{xl/index.html(type=${film.typeId})}" target="_blank" th:text="${film.typeName}"></a>
+                            </li>
+                            <li>
+                                <span>主演：</span>
+                                <a href="javascript:;" th:text="${film.actor}"></a>
+                            </li>
+                            <li>
+                                <span>地区：</span><span th:text="${film.locName}"></span>
+                            </li>
+                            <li>
+                                <span>更新日期：</span><span th:text="${film.updateTime}"/>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <span>剧情：</span>
+
+                                <span th:if="${film.plot.length()>=100}" th:text="${#strings.substring(film.plot, 0, 100)}"/>
+                                <span th:if="${film.plot.length()<100}" th:text="${film.plot}"/>
+
+                                [<a th:href="@{/xl/detail.html(filmId=${film.id})}">详细</a>]
+                            </li>
+                            <div class="pfen">
+                                <p>影片评价</p>
+                                <div id="star" th:data-score="${#strings.capitalizeWords(film.evaluation,'.')[0]}" data-number="10"></div>
+                                <div class="fen" id="filmStarScoreTip">
+                                <span class="no c1" id="filmStarScore">
+                                    [[${#strings.capitalizeWords(film.evaluation,'.')[0]}]]<i th:if="${#strings.containsIgnoreCase(film.evaluation,'.')}" th:text="${'.'+#strings.capitalizeWords(film.evaluation,'.')[2]}"></i>
+                                </span>
+                                    <span th:if="${film.evaluation>=1&&film.evaluation<2}">很烂</span>
+                                    <span th:if="${film.evaluation>=2&&film.evaluation<4}">一般</span>
+                                    <span th:if="${film.evaluation>=4&&film.evaluation<6}">不妨一看</span>
+                                    <span th:if="${film.evaluation>=6&&film.evaluation<8}">比较精彩</span>
+                                    <span th:if="${film.evaluation>=8&&film.evaluation<=10}">棒极了</span>
+
+                                    (<span th:text="${totalRatys}"></span>评)
+
+                                    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                                    <script>
+                                        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};
+                                        (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);
+                                    </script>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div th:each="reslist,reslistStat:${resListDupan}" th:if="${reslistStat.index==0}" class="updatetps clearfix">
+                        更新小提示：度盘：<a th:href="${reslist.link}" th:text="${reslist.link}" target="_blank"></a> 密码：<span th:text="${reslist.name}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="infoad" >
+                <div class="skydrive">
+                    <p><span>友情提示：</span>欢迎大家使用网盘连接下载！</p>
+                    <ul>
+                        <li th:each="relist:${resListDupan}" class="wbaidu"><a th:href="${relist.link}" target="_blank">密码：<span th:text="${relist.name}"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--间隔-->
+    <div class="row" style="background: #dcdfe2;height: 10px;"></div>
+
+    <div class="row">
+        <div class="col">
+            <div class="endpage clearfix">
+                <div class="ulike">
+                    <div class="title"><span>猜你喜欢</span></div>
+                    <ul class="img-list imglist clearfix">
+                        <li th:each="list:${films}">
+                            <a class="play-img" th:href="@{/xl/detail.html(filmId=${list.id})}" th:title="${list.name}" target="_blank">
+                                <img class="lazy" th:data-original="${list.image}" src="" th:alt="${list.name}"><i></i>
+                                <em>
+                                    <span th:if="${list.resolution=='1080'}">1280高清</span>
+                                    <span th:if="${list.resolution!='1080'}" th:text="${list.resolution}+'P'"></span>
+                                </em>
+                            </a>
+                            <h5>
+                                <a th:href="@{/xl/detail.html(filmId=${list.id})}" th:title="${list.name}" target="_blank" th:text="${list.name}">
+                                </a>
+                            </h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--间隔-->
+    <div class="row" style="background: #dcdfe2;height: 10px;"></div>
+
+    <div class="row">
+        <a id="kan"></a>
+        <div th:if="${resListFlh.size()!=0}" class="col">
+            <!--在线播放 START-->
+            <div style="background: white;width: 100%;height: auto;margin-top:10px;padding: 5px;">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><span class="title-icon">在线播放</span></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                        <span  class="title-con">
+                            此处支持在线播放，若不能播放请下载后观看或者点击
+                            <a href="javascript:;" onclick="fk('y1')" style="color:red;">失效一键反馈</a>
+                        </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div th:if="${src!=null}" class="player">
+                        <iframe th:src="@{/xl/pc.html}" height="100%" width="100%" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="mad-box-form">
+                        <a th:each="li:${resListFlh}" class="mad-a" href="javascript:;" th:data="${li.link}" th:j="${li.episodes}" th:id="'flh'+${li.episodes}" onclick="Flh(this)" th:text="${li.episodes}+'集'"></a>
+                    </div>
+                </div>
+            </div>
+            <!--在线播放 END-->
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col">
+            <!--下载地址-->
+                <div th:if="${resListHttp.size()!=0||resListOther.size()!=0||resListThunder.size()!=0||resListEd2k!='[]'}" class="mox">
+                    <a id="down"></a>
+                        <!--下载地址1-->
+                        <div th:if="${resListEd2k!='[]'}" style="background: white;width: 100%;height: auto;padding: 4px;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                     <span class="title-icon">下载地址</span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="title-con">
+                                        此处支持迅雷、QQ旋风、小米路由下载，同时支持迅雷影音播放，若不能下载请点击
+                                        <a href="javascript:;" onclick="fk('x2')" style="color:red;">失效一键反馈</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${resListEd2k!='[]'}" class="row">
+                            <div class="col">
+                                <div class="ndownlist">
+                                    <script th:inline="javascript" th:if="${resListEd2k!='[]'}">
+                                        var GvodUrls = "";
+                                        var resListEd2kArrayString = [[${resListEd2k}]];
+                                        var parse = JSON.parse(resListEd2kArrayString);
+                                        for (var i = 0; i < parse.length; i++) {
+                                            if (i == (parse.length - 1)) {
+                                                GvodUrls += parse[i].link;
+                                            } else {
+                                                GvodUrls += parse[i].link + "###";
+                                            }
+                                        }
+                                    </script>
+                                    <div th:if="${resListEd2k!='[]'}">
+                                        <script th:src="@{/static/js/download/xunlei.js(v=${version})}"></script>
+                                        <script th:src="@{/static/js/download/check.js(v=${version})}"></script>
+                                        <ul>
+                                            <script>
+                                                var mvName = "";
+                                                var j = 0;
+                                                for (var i = 0; i < GvodUrlLen; i++) {
+                                                    mvName = get_movie_name(GvodUrlArray[i], '/');
+                                                    j++;
+                                                    if (j == 1) {
+                                                        uclass = "class=post2";
+                                                        j = -1;
+                                                    } else {
+                                                        uclass = "";
+                                                    }
+                                                    xmhref = "https://d.miwifi.com/d2r/?url=" + Base64.encodeURI(ThunderEncode(GvodUrlArray[i])) + "&src=xunbo";
+                                                    document.writeln('<li><div class="row" style="padding: 4px 0px;"><div class="col-sm-6"><a style="margin-left: 10px;" oncontextmenu=ThunderNetwork_SetHref_b(this) href="javascript:void(0)" thunderResTitle="" thunderType="" thunderPid="20369" thunderHref="' + ThunderEncode(GvodUrlArray[i]) + '" >' + getSubstr(GvodUrlArray[i]) + '</a></div><div class="col-sm-6"><span><a class=d5 href="' + ThunderEncode(GvodUrlArray[i]) + '" target=_blank title="迅雷高速下载">迅雷</a><a class=d1 href="javascript:video(0);" onclick="start(\'' + GvodUrlArray[i] + '\')" title="迅雷影音播放">看看</a><a class=d2 href="http://lixian.vip.xunlei.com/lixian_login.html?referfrom=union&ucid=20369&furl=' + encodeURIComponent(ThunderEncode(GvodUrlArray[i])) + '" target=_blank title="迅雷离线下载">离线</a><a href="' + xmhref + '" target=_blank class=d4 title="小米路由下载">小米</a></span></div></div></li>');
+                                                }
+                                            </script>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--下载地址1-->
+
+                    <!--下载地址2-->
+                    <div th:if="${resListHttp.size()!=0||resListOther.size()!=0||resListThunder.size()!=0}" style="background: white;width: 100%;height: auto;padding: 5px;">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="title-icon">下载地址</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="title-con">
+                                    此处支持本地下载、迅雷下载，若不能下载请点击
+                                    <a href="javascript:;" onclick="fk('x2')" style="color:red;">失效一键反馈</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${resListHttp.size()!=0||resListOther.size()!=0||resListThunder.size()!=0}" class="row">
+                        <div class="col">
+                            <div class="ndownlist">
+                                <ul class="thunder">
+                                    <li th:each="relist:${resListHttp}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <i><input type="checkbox" th:value="${relist.id}" name="CopyAddr1"/></i>
+                                                <p style="width:300px;height: auto;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" th:text="${relist.name}"></p>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <a th:href="${relist.link}" style="float: right" class="btn">下载</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li th:each="relist:${resListThunder}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <i><input type="checkbox" th:value="${relist.id}" name="CopyAddr1"/></i>
+                                                <p style="width:300px;height: auto;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" th:text="${relist.name}"></p>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a th:href="@{${relist.link}}" style="float: right" class="btn">下载</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li th:each="relist:${resListOther}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <i><input type="checkbox" th:value="${relist.id}" name="CopyAddr1"/></i>
+                                                <p style="width:300px;height: auto;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" th:text="${relist.name}"></p>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <a th:href="${relist.link}" style="float: right" class="btn">下载</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--下载地址2-->
+                </div>
+        </div>
+    </div>
+    <a name="desc"></a>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col">
+            <div class="endtext">
+                <div class="title"><span>剧情介绍</span></div>
+                <p th:text="${film.plot}"></p>
+            </div>
+            <!--下载地址-->
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    var l = location.href;
+    if (l.indexOf("&j=") != -1) {
+        var js = l.substring(l.indexOf("&j="), l.indexOf("#kan")).split("=")[1];
+        $("#mad" + js).css({"background": "#517FAF", "border": "1px solid #517FAF", "color": "#fff"});
+    } else if (l.indexOf("&j1=") != -1) {
+        var js = l.substring(l.indexOf("&j1="), l.indexOf("#kan")).split("=")[1];
+        $("#flh" + js).css({"background": "#517FAF", "border": "1px solid #517FAF", "color": "#fff"});
+    }
+
+
+    /*在线播放*/
+    function Flh(e) {
+        var f = $(e).attr("data");
+        var j = $(e).attr("j");
+        if (f != "") {
+            location.href = "[[${prourl}]]xl/detail.html?filmId=[[${film.id}]]&src=" + Base64.encodeURI(f) + "&j=" + j + "#kan";
+        }
+    }
+    /*在线播放*/
+
+    $('#star').raty({
+        hints: ['很烂', '很烂', '一般', '一般', '不妨一看', '不妨一看', '比较精彩', '比较精彩', '棒极了', '棒极了'],
+        number: 10,
+        path: "/static/img/star",
+        size: 24,
+        starOff: 'star-off-big.png',
+        starOn: 'star-on-big.png',
+        precision: true,
+        score: function () {
+            return $(this).attr('data-score');
+        },
+        click: function (score, evt) {
+
+            /*获取是否存在cookie评分值*/
+            if (getCookie("raty[[${film.id}]]") == null) {
+                /**
+                 * 未评分
+                 */
+                saveRaty("[[${film.id}]]", score);
+            } else {
+                alert("你已经评过分了，你的评分" + getCookie("raty[[${film.id}]]") + "分");
+                location.reload();
+            }
+
+        }
+    });
+
+    function saveRaty(filmId, score) {
+        $.ajax({
+            url: "/xl/addRaty.html",
+            type: "post",
+            dataType: "json",
+            data: "filmId=" + filmId + "&score=" + score,
+            success: function (data) {
+                if (data.code == '1') {
+                    alert("评分成功,你的评分" + score + "分");
+                    setCookie("raty[[${film.id}]]", score);
+                } else {
+                    alert("评分失败,请稍后重试！");
+                }
+                location.reload();
+            }
+        });
+    }
+
+    /*失效一键反馈*/
+    function fk(e) {
+        /*获取是否存在cookie评分值*/
+        if (getCookie(e+"[[${film.id}]]") == null) {
+            /**
+             * 未评分
+             */
+            var title = "";
+            var content = "";
+            switch (e) {
+                case "y1":
+                    title = "在线点播1失效反馈";
+                    content = "胖哥温馨提示：你好，有一位本网站忠实粉丝惊奇的发现[[${film.cataLogName}]]-[[${film.subClassName}]]-[[${film.typeName}]]-<span  style='color:#00AFE4;'>[<span th:text='${film.name}'/>]</span>的在线点播1已失效，请前往<a th:href='@{${prourl}xl/detail.html(filmId=${film.id})}'>查看</a>是否失效，若失效请去<a th:href='@{${prourl}film.html(filmId=${film.id})}'>更改</a>";
+                    break;
+                case "y2":
+                    title = "在线点播2失效反馈";
+                    content = "胖哥温馨提示：你好，有一位本网站忠实粉丝惊奇的发现[[${film.cataLogName}]]-[[${film.subClassName}]]-[[${film.typeName}]]-<span  style='color:#00AFE4;'>[<span th:text='${film.name}'/>]</span>的在线点播2已失效，请前往<a th:href='@{${prourl}xl/detail.html(filmId=${film.id})}'>查看</a>是否失效，若失效请去<a th:href='@{${prourl}film.html(filmId=${film.id})}'>更改</a>";
+                    break;
+                case "x1":
+                    title = "下载地址1失效反馈";
+                    content = "胖哥温馨提示：你好，有一位本网站忠实粉丝惊奇的发现[[${film.cataLogName}]]-[[${film.subClassName}]]-[[${film.typeName}]]-<span  style='color:#00AFE4;'>[<span th:text='${film.name}'/>]</span>的下载地址1已失效，请前往<a th:href='@{${prourl}xl/detail.html(filmId=${film.id})}'>查看</a>是否失效，若失效请去<a th:href='@{${prourl}film.html(filmId=${film.id})}'>更改</a>";
+                    break;
+                case "x2":
+                    title = "下载地址2失效反馈";
+                    content = "胖哥温馨提示：你好，有一位本网站忠实粉丝惊奇的发现[[${film.cataLogName}]]-[[${film.subClassName}]]-[[${film.typeName}]]-<span  style='color:#00AFE4;'>[<span th:text='${film.name}'/>]</span>的下载地址2已失效，请前往<a th:href='@{${prourl}xl/detail.html(filmId=${film.id})}'>查看</a>是否失效，若失效请去<a th:href='@{${prourl}film.html(filmId=${film.id})}'>更改</a>";
+                    break;
+                default:
+                    alert("参数错误");
+                    break;
+            }
+            if(title!=""&&content!=""){
+                $.ajax({
+                    url: "/sendEmail.html",
+                    type: "post",
+                    dataType: "json",
+                    data: "title=" + title + "&content=" + content,
+                    success: function (data) {
+                        if (data.code == '1') {
+                            alert("反馈成功，我们会尽快处理");
+                            setCookie(e+"${film.id}", e);
+                        } else {
+                            alert("反馈失败,请稍后重试！");
+                        }
+                    }
+                });
+            }
+        } else {
+            alert("你已经反馈过了，谢谢你的支持");
+        }
+    }
+
+    /*对cookie的操作*/
+    var username = document.cookie.split(";")[0].split("=")[1];
+    //JS操作cookies方法!
+    //写cookies
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+
+    /*读取cookies*/
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    /*删除cookie*/
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+</script>
+<!--头部-->
+<div th:replace="pub/footer"/>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.UserMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.User">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="is_vip" jdbcType="INTEGER" property="isVip" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_passwd" jdbcType="VARCHAR" property="userPasswd" />
+  </resultMap>
+</mapper>

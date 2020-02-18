@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有影片</title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+
+    <script th:src="@{/static/js/manager/list.js}" ></script>
+    <link th:href="@{/static/css/manager/list.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="search-box">
+                <div style="margin:0px auto;width:100%;overflow: hidden;">
+                    <a style="float: left; margin-bottom: 5px;" class="btn btn-dark" th:href="@{/video/manager/film.html}">添加影片</a>
+                    <form th:action="@{/video/manager/list.html}" style="display: inline-block; margin-top: 10px;" method="GET">
+                        <input type="search" name="name" class="input" th:value="${name}" autocomplete="off"
+                               placeholder="请输入影片名称"/>
+                    </form>
+                </div>
+            </div>
+            <div style="margin: 3px auto;">
+                <ul class="film-list">
+                    <li th:each="list:${filmList}">
+                        <a th:href="@{/video/manager/film.html(filmId = ${list.id})}">
+                            <div th:title="${list.name}"><img th:src="@{${list.image}}"></div>
+                        </a>
+                        <div class="film-info">
+                            <a th:href="@{/video/manager/film.html(filmId = ${list.id})}" th:title="${list.name}" th:text="${list.name}"></a>
+                            <p><span th:text="${list.onDecade}"/>-<span th:text="${list.typeName}"></span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

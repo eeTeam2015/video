@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.VipCodeMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.VipCode">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="is_use" jdbcType="VARCHAR" property="isUse" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, is_use, create_time, expire_time
+  </sql>
+</mapper>

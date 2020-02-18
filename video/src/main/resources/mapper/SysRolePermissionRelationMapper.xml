@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.SysRolePermissionRelationMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.SysRolePermissionRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="permission_id" jdbcType="VARCHAR" property="permissionId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, role_id, permission_id, create_by, create_time, update_by, update_time, remark
+  </sql>
+
+  <select id="selectByRoleIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_sys_role_permission_relation
+    <where>
+      <if test="roleIds != null and roleIds.size()>0">
+        and role_id in
+        <foreach collection="roleIds" item="item" open="(" close=")" separator=",">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>权限信息列表</title>
+    <!--导入layui css文件-->
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css">
+    <!--导入layui js文件-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+
+    <!--导入Jquery-->
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.serializejson.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.serializejson.js"></script>
+
+    <!--导入外部自定义js-->
+    <script type="text/javascript" src="/static/js/user/sys-permission-info.js"></script>
+</head>
+<body class="layui-layout-body">
+<blockquote class="layui-elem-quote layui-quote-nm">
+    <div class="permissionTable">
+        名称：
+        <div class="layui-inline">
+            <input class="layui-input" name="name" id="search_name" autocomplete="off">
+        </div>
+        <button class="layui-btn" data-type="reload">搜索</button>
+    </div>
+</blockquote>
+
+<table class="layui-hide" id="permission" lay-filter="permission"></table>
+
+<!--=========================================模板 START=====================================-->
+<!--顶部左侧的菜单按钮-->
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>-->
+        <button class="layui-btn layui-btn-sm" lay-event="add-permission">新增权限</button>
+    </div>
+</script>
+
+<!--表格操作列的按钮-->
+<script type="text/html" id="operate-bar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<!--数据新增或者修改按钮-->
+<script type="text/html" id="add-form">
+    <form id="permission-add-layui-form" lay-filter="permission-add-layui-form" class="layui-form" action="">
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">上级权限：</label>
+                <div class="layui-input-block">
+                    <select name="pid" id="add_update_pid" lay-verify="required"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" id="add_update_name" lay-verify="name" autocomplete="off"
+                       placeholder="权限名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">路径：</label>
+            <div class="layui-input-block">
+                <input type="text" name="url" id="add_update_alias"  lay-verify="url" autocomplete="off"
+                       placeholder="权限路径" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-block">
+                    <select name="type" id="add_update_type" lay-verify="required">
+                        <option value="1" val-name="菜单">菜单</option>
+                        <option value="2" val-name="接口">接口</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <input type="text" name="description" id="add_update_description"  lay-verify="description" autocomplete="off"
+                       placeholder="权限描述" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea name="remark" placeholder="请输入备注"  id="add_update_remark" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </form>
+</script>
+
+<!--隐藏id表单数据-->
+<script type="text/html" id="add_update_hidde_form">
+     <input type="hidden" name="id" id="add_update_hidde_id"/>
+</script>
+
+<!--信息显示box-->
+<script type="text/html" id="show-info">
+    <div class="layui-box layui-text" id="show-info-box"></div>
+</script>
+<!--=========================================模板 END=====================================-->
+</body>
+</html>

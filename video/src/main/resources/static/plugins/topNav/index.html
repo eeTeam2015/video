@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery模拟网页顶部二级下拉导航</title>
+<link rel="stylesheet" href="css/head.css" />
+</head>
+<body>
+
+<!-- 代码部分begin -->
+<div class="global-nav">
+    <div class="container">
+        <!--收藏关注start-->
+        <ul class="global-nav-left">
+            <li><b></b><a href="#">收藏网站</a></li>
+            <li>
+                <div class="weixinshowPic"> <i class="i-qrcode"></i>关注本站
+                    <div class="wx_box"><span class="arrow"><i class="layer1"></i><i class="layer2"></i></span></div>
+                </div>
+            </li>
+        </ul>
+
+        <!--收藏关注end-->
+        <div class="global-nav-right">
+            <a class="global-nav-right_a" target="_blank" href="#"> <i class="ico global-nav-right_i" title="vip"></i> <span style="float:left">创业项目</span> </a>
+            <div class="dropdown ">
+                <a href="#" class="dropdown-main"> <i class="ico helper-sprite-menu"></i> <span>网站导航</span> <i class="ico helper-sprite-dropdown"></i> </a>
+                <div class="dropdown-main_after"></div>
+                <div class="dropdown-sub" style="display:none;">
+                    <div class="dropdown-sub_box">
+                        <div class="menu_links2015">
+                            <a href="#" target="_blank"><img src="images/menu-bd2.jpg" data-tangram-ori-src="images/menu-bd2.jpg"> </a>
+                            <a href="#" target="_blank"><img src="images/menu-bd3.jpg" data-tangram-ori-src="images/menu-bd3.jpg"> </a>
+                            <a href="#" target="_blank"><img src="images/menu-bd4.jpg" data-tangram-ori-src="images/menu-bd4.jpg"> </a>
+                        </div>
+                        <div class="menu_nav2015">
+                            <p class="menu_nav2015_p1">
+                                <span><a target="_blank" href="#">餐饮小吃</a></span>
+                                <a target="_blank" href="#">火锅</a>
+                                <a target="_blank" href="#">韩式餐饮</a>
+                                <a target="_blank" href="#">烤鱼</a>
+                                <a target="_blank" href="#">香锅</a>
+                                <a target="_blank" href="#">快餐</a>
+                                <a target="_blank" href="#">饮品</a>
+                                <a target="_blank" href="#">小吃</a>
+                                <a target="_blank" href="#">面食</a>
+                            </p>
+                            <p class="menu_nav2015_p2">
+                                <span><a target="_blank" href="#">饰品礼品</a></span>
+                                <a target="_blank" href="#">DIY礼品</a>
+                                <a target="_blank" href="#">工艺礼品</a>
+                                <a target="_blank" href="#">节庆礼品</a>
+                                <a target="_blank" href="#">生活超市</a>
+                            </p>
+                            <p class="menu_nav2015_p3">
+                                <span><a target="_blank" href="#">服装鞋帽</a></span>
+                                <a target="_blank" href="http://www.lanrenzhijia.com">懒人之家</a>
+                                <a target="_blank" href="#">精品折扣</a>
+                                <a target="_blank" href="#">精品童装</a>
+                                <a target="_blank" href="#">品牌服装</a>
+                                <a target="_blank" href="#">女装</a>
+                                <a target="_blank" href="#">日韩服饰</a>
+                            </p>
+                            <p class="menu_nav2015_p4">
+                                <span><a target="_blank" href="#">家居建材</a></span>
+                                <a target="_blank" href="#">家居日用</a>
+                                <a target="_blank" href="#">装饰装修</a>
+                                <a target="_blank" href="#">室内环保</a>
+                                <a target="_blank" href="#">特色家居</a>
+                                <a target="_blank" href="#">建筑贴膜</a>
+                                <a target="_blank" href="#">灯具灯箱</a>
+                            </p>
+                            <p class="menu_nav2015_p5">
+                                <span><a target="_blank" href="#">环保机械</a></span>
+                                <a target="_blank" href="#">节能环保</a>
+                                <a target="_blank" href="http://www.lanrenzhijia.com">懒人</a>
+                                <a target="_blank" href="#">专利技术</a>
+                                <a target="_blank" href="#">机械设备</a>
+                                <a target="_blank" href="#">汽车服务</a>
+                                <a target="_blank" href="#">设备养护</a>
+                                <a target="_blank" href="#">室内排毒</a>
+                            </p>
+                            <p class="menu_nav2015_p6">
+                                <span><a target="_blank" href="#">教育网络</a></span>
+                                <a target="_blank" href="#">自助建站</a>
+                                <a target="_blank" href="#">网络商城</a>
+                                <a target="_blank" href="#">网上创业</a>
+                                <a target="_blank" href="#">教育培训</a>
+                                <a target="_blank" href="#">学生用品</a>
+                                <a target="_blank" href="#">幼儿早教</a>
+                                <a target="_blank" href="#">少儿教育</a>
+                                <a target="_blank" href="#">益智玩具</a>
+                            </p>
+                            <p class="menu_nav2015_p7">
+                                <span><a target="_blank" href="#">美容保健</a></span>
+                                <a target="_blank" href="#">美容</a>
+                                <a target="_blank" href="#">化妆品</a>
+                                <a target="_blank" href="#">养生馆</a>
+                                <a target="_blank" href="#">美体瘦身</a>
+                                <a target="_blank" href="#">保健用品</a>
+                            </p>
+                            <p class="menu_nav2015_p8">
+                                <span><a target="_blank" href="#">特色项目</a></span>
+                                <a target="_blank" href="#">新奇特</a>
+                                <a target="_blank" href="#">生活服务</a>
+                                <a target="_blank" href="#">数码娱乐</a>
+                                <a target="_blank" href="#">休闲娱乐</a>
+                                <a target="_blank" href="#">娱乐游戏</a>
+                                <a target="_blank" href="#">电影院</a>
+                                <a target="_blank" href="#">儿童乐园</a>
+                                <a target="_blank" href="http://www.lanrenzhijia.com">懒人之家</a>
+                            </p>
+                        </div>
+                    </div>
+                </div> <a class="global-nav-right_a" href="#">返回首页</a> </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-min.js"></script>
+<script>
+$(document).ready(function(){		   
+	$('.weixinshowPic').hover(function() {
+		$(this).addClass('weixinshowPic-hover');
+	}, function() {
+		$(this).removeClass('weixinshowPic-hover');
+	});
+	$('.dropdown').hover(function() {
+		$(this).addClass('dropdown-hover');
+		$(".dropdown-sub").show('slow');
+	}, function() {
+		$(this).removeClass('dropdown-hover');
+	});
+});
+</script>
+<!-- 代码部分end -->
+
+</body>
+</html>
+

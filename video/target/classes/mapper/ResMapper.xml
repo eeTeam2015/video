@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zzti.common.dao.impl.ResMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zzti.common.model.Res">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="episodes" jdbcType="INTEGER" property="episodes" />
+    <result column="is_use" jdbcType="INTEGER" property="isUse" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="link_type" jdbcType="VARCHAR" property="linkType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="film_id" jdbcType="VARCHAR" property="filmId" />
+  </resultMap>
+
+</mapper>

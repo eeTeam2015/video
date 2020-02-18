@@ -1,0 +1,319 @@
+@charset "utf-8";
+a{
+    color:#444;
+}
+img.lazy{
+    background: url("../img/pub/lazyload.gif") no-repeat scroll center center transparent;
+}
+.co{
+    color:#00AFE4;
+}
+
+a{ color:#333; text-decoration:none;}
+
+/*头部*/
+.topNav-box{
+    width:100%;
+    height: auto;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+.topNav-box-center{
+    width:1000px;
+    height: auto;
+    overflow: hidden;
+    margin:0px auto;
+}
+
+/*导航栏*/
+*{margin:0;padding:0;border:0;list-style: none;}
+.menu{height:48px;display:block;padding:0px;width:999px;margin: 0 auto;background-image:url("../img/pub/head/s_03.jpg");background-repeat:repeat;}
+.menu ul{list-style:none;padding:0;margin:0;}
+.menu ul li{float:left;overflow:hidden;position:relative;line-height:48px;text-align:center;}
+.menu ul li a{position:relative;display:block;color:#fff;width:111px;height:48px;font-family:"微软雅黑", "宋体";font-size:14px;text-decoration:none;cursor:pointer;font-weight:bold;line-height:48px;}
+.menu ul li a span{position:absolute;left:0;width:111px;}
+.menu ul li a span.out{top:0px;}
+.menu ul li a span.over,  .menu ul li a span.bg{top:-48px;}
+.menu ul li a span.over{color:#FFF;height:48px;width:111px;background-image:url("../img/pub/head/w_03.jpg");background-repeat:repeat;}
+/*导航栏*/
+
+
+/*搜索框*/
+.lanren-search-form{
+    width: 575px;
+    /* margin: 100px auto; */
+    overflow: hidden;
+    float: right;
+    margin: 30px 0px 10px 0px;
+}
+.lanren-search-form .search-bd{height: 25px;}
+.lanren-search-form .search-bd li{font-size:12px;width:60px;height: 25px;line-height: 25px;text-align:center;float: left;cursor: pointer;background-color: #eee;color: #666;}
+.lanren-search-form .search-bd li.selected{color: #fff;font-weight: 700;background-color: #00AFE4;}
+.lanren-search-form .search-hd{height:34px;background-color: #00AFE4;padding: 3px;position: relative;}
+.lanren-search-form .search-hd .search-input{width: 490px;height: 22px;line-height: 22px;padding: 6px 0;background: none;text-indent: 10px;border: 0;outline: none;position: relative;left: 3px;top: 0;z-index: 5;#margin-left:-10px;}
+.lanren-search-form .search-hd .btn-search{width: 70px;height: 34px;line-height:34px;position: absolute;right: 3px;top: 3px;border: 0;z-index: 6;cursor: pointer;font-size: 12px;color: #fff;font-weight: 700;background: none;outline: none;}
+.lanren-search-form .search-hd .pholder{display: inline-block;padding: 2px 0;font-size: 12px;color: #999;position: absolute;left: 13px;top: 11px;z-index: 4;background: url("../img/pub/head/zoom.jpg") no-repeat 0 0;padding-left:25px;#top:11px;}
+.lanren-search-form .search-hd .s2,.lanren-search-form .search-hd #s2{display: none;}
+.lanren-search-form .search-bg{width: 495px;height: 34px;background-color: #fff;position: absolute;left: 3px;top: 3px;z-index: 1;}
+/*搜索框*/
+/*头部*/
+
+
+/*左侧log*/
+.topNav-box-center-left{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    float: left;
+    margin-top: -90px;
+    margin-left: -100px;
+    transform: scale(0.25,0.25);
+    -ms-transform: scale(0.25,0.25);
+    -webkit-transform: scale(0.25,0.25);
+    -moz-transform: scale(0.25,0.25);    /* for Firefox */
+    -ms-transform: scale(0.25,0.25);       /* for IE */
+    -o-transform: scale(0.25,0.25);        /* for Opera */
+}
+/*logo图标*/
+*{margin:0;padding:0;list-style: none}
+.chrome {
+    position:absolute;
+    width:300px;
+    height:300px;
+    overflow:hidden;
+    border-radius:50%;
+    animation:spin 3s linear infinite;
+
+
+}
+@keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}
+.chrome div {
+    position:absolute;
+}
+.chrome::before {
+    content:"";
+    position: absolute;
+    z-index:100;
+    top:95px;
+    left:95px;
+    width:110px;
+    height:110px;
+    background:#fff;
+    border-radius:110px;
+    overflow:hidden;
+}
+.chrome::after {
+    content:"";
+    position: absolute;
+    z-index: 101;
+    top:105px;
+    left:105px;
+    width:90px;
+    height:90px;
+    background:#f00;
+    border-radius:90px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#80B1DA), to(#165E98));
+
+    /* 如果浏览器不支持渐变，使用图像作为背景 */
+    /*background: url(gradient.jpg);*/
+    /* Webkit: Safari 4-5, Chrome 1-9 */
+  /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff6600), to(#165E98));*/
+    /* Webkit: Safari 5.1+, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #80B1DA, #165E98);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #80B1DA, #165E98);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #80B1DA, #165E98);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #80B1DA, #165E98);
+    /* IE < 10 */
+    /* 注意：这一行必须写在最后 */
+   /* FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ff6600, endColorStr=#339900);*/
+
+}
+.chrome_part_color {
+    width:200px;
+    height:210px;
+    opacity:0.94;
+}
+.chrome_part_red {
+    z-index: 3;
+    top: -44px;
+    left: 55px;
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);       /* for Firefox */
+    -ms-transform: rotate(60deg);        /* for IE */
+    -o-transform: rotate(60deg);         /* for Opera */
+
+
+    border-bottom-right-radius: 30px;
+    background: -webkit-gradient(radial, 20% 30%, 20, 40% 30%, 100, from(#00AFE4), to(#00AFE4));
+
+    /* 如果浏览器不支持渐变，使用图像作为背景 */
+    /*background: url(gradient.jpg);*/
+    /* Webkit: Safari 4-5, Chrome 1-9 */
+    /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff6600), to(#165E98));*/
+    /* Webkit: Safari 5.1+, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #00AFE4, #00AFE4);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #00AFE4, #00AFE4);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #00AFE4, #00AFE4);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #00AFE4, #00AFE4);
+    /* IE < 10 */
+    /* 注意：这一行必须写在最后 */
+    /* FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ff6600, endColorStr=#339900);*/
+}
+.chrome_part_red2 {
+    z-index: 9;
+    width: 160px;
+    height: 80px;
+    top: 50px;
+    left: 18px;
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);       /* for Firefox */
+    -ms-transform: rotate(60deg);        /* for IE */
+    -o-transform: rotate(60deg);         /* for Opera */
+    background: -webkit-gradient(radial, 30% 0, 30, 40% 30%, 60, from(#00AFE4), to(#00AFE4));
+    /* 如果浏览器不支持渐变，使用图像作为背景 */
+    /*background: url(gradient.jpg);*/
+    /* Webkit: Safari 4-5, Chrome 1-9 */
+    /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff6600), to(#165E98));*/
+    /* Webkit: Safari 5.1+, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #00AFE4, #00AFE4);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #00AFE4, #00AFE4);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #00AFE4, #00AFE4);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #00AFE4, #00AFE4);
+    /* IE < 10 */
+    /* 注意：这一行必须写在最后 */
+    /* FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ff6600, endColorStr=#339900);*/
+
+}
+.chrome_part_yellow {
+    z-index:5;
+    top:95px;
+    right:-30px;
+    border-top-left-radius:30px;
+    background:-webkit-gradient(radial, 30% 40%, 130, 40% 20%, 60, from(#DBA328), to(#FDD207));
+    /* 如果浏览器不支持渐变，使用图像作为背景 */
+    /*background: url(gradient.jpg);*/
+    /* Webkit: Safari 4-5, Chrome 1-9 */
+    /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff6600), to(#165E98));*/
+    /* Webkit: Safari 5.1+, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #DBA328, #FDD207);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #DBA328, #FDD207);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #DBA328, #FDD207);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #DBA328, #FDD207);
+    /* IE < 10 */
+    /* 注意：这一行必须写在最后 */
+    /* FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ff6600, endColorStr=#339900);*/
+}
+.chrome_part_green {
+    z-index:7;
+    top:82px;
+    left:-25px;
+    -webkit-transform:rotate(117deg);
+    -moz-transform: rotate(117deg);       /* for Firefox */
+    -ms-transform: rotate(117deg);        /* for IE */
+    -o-transform: rotate(117deg);         /* for Opera */
+    border-top-left-radius:30px;
+    background:-webkit-gradient(radial, 30% 40%, 120, 30% 40%, 60, from(#419643), to(#4DB749));
+    /* 如果浏览器不支持渐变，使用图像作为背景 */
+    /*background: url(gradient.jpg);*/
+    /* Webkit: Safari 4-5, Chrome 1-9 */
+    /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff6600), to(#165E98));*/
+    /* Webkit: Safari 5.1+, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #419643, #4DB749);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #419643, #4DB749);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #419643, #4DB749);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #419643, #4DB749);
+    /* IE < 10 */
+    /* 注意：这一行必须写在最后 */
+    /* FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ff6600, endColorStr=#339900);*/
+}
+.chrome_mask_color {
+    width:110px;
+    height:110px;
+    background:#fff;
+}
+.chrome_mask_red {
+    z-index: 8;
+    height: 40px;
+    top: 60px;
+    left: 25px;
+    -webkit-transform: rotate(50deg);
+    -moz-transform: rotate(50deg);       /* for Firefox */
+    -ms-transform: rotate(50deg);        /* for IE */
+    -o-transform: rotate(50deg);         /* for Opera */
+    background: #00AFE4;
+}
+.chrome_mask_yellow {
+    z-index:4;
+    top:105px;
+    right:-10px;
+    -webkit-transform:rotate(-12deg);
+    -moz-transform: rotate(-12deg);       /* for Firefox */
+    -ms-transform: rotate(-12deg);        /* for IE */
+    -o-transform: rotate(-12deg);         /* for Opera */
+}
+.chrome_mask_green {
+    z-index:6;
+    top:185px;
+    left:38px;
+    -webkit-transform:rotate(15deg);
+    -moz-transform: rotate(15deg);       /* for Firefox */
+    -ms-transform: rotate(15deg);        /* for IE */
+    -o-transform: rotate(15deg);         /* for Opera */
+}
+/*logo图标*/
+/*文字*/
+.zi{
+    width: 140px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-left: -90px;
+    margin-top: 30px;
+    font-family: "微软雅黑", "宋体";
+}
+.zi .h{
+    text-align: center;
+    font-size: 30px;
+    font-family: inherit;
+    font-weight: 600;
+}
+.zi .y{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+/*文字*/
+
+
+/*左侧log*/
+
+/*底部*/
+#footer {
+    margin-top: 10px;
+    clear: both;
+    text-align: center;
+    color: #555;
+    padding: 10px 0 30px;
+}
+#footer p {
+    line-height: 28px;
+}
+/*底部*/

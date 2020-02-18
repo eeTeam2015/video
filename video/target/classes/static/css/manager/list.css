@@ -1,0 +1,131 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-family: '微软雅黑';
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+/*影片列表*/
+.film-list {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+}
+
+.film-list li {
+    list-style: none;
+    float: left;
+    width: 104px;
+    margin: 2px;
+}
+
+.film-list li img {
+    width: 86px;
+    height: 122px;
+    padding: 4px;
+    border: 1px solid #ddd;
+}
+
+.film-info {
+    width: 98%;
+    padding: 1%;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.film-info a {
+    color: #1d94ff;
+}
+
+.film-info p {
+    color: #A9A8A8;
+}
+
+/*影片列表*/
+.search-box {
+    width: 100%;
+    height: auto;
+    text-align: right;
+    margin: 10px auto 0px auto;
+}
+
+/*box框架*/
+.box {
+    width: 1190px;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.box-left {
+    width: 290px;
+    height: auto;
+    float: left;
+    overflow: hidden;
+}
+
+.box-right {
+    width: 900px;
+    height: auto;
+    float: right;
+    overflow: hidden;
+}
+
+/*box框架*/
+/*导航*/
+.nav-title {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    cursor: pointer;
+
+}
+
+.nav-icon {
+    font-style: normal;
+    height: 100%;
+    width: 30px;
+    display: inline-block;
+    background: #fff url("static/img/pub/nav.jpg") -144px -27px no-repeat; /*-143px -27px*/
+}
+
+.nav1-ul {
+    width: 60%;
+    height: auto;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.nav1-li {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.nav2-ul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.nav2-li {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*导航*/

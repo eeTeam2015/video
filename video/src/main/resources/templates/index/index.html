@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:with="
+      version=${#dates.createNow().getTime()},
+      prourl=${#request.getScheme() + '://' + #request.getServerName() + ':' + #request.getServerPort() + #request.getContextPath() + '/'},
+      proname=${#request.getContextPath()},
+      pageurl=@{/xl/index.html}"
+      >
+<head>
+    <base th:href="${prourl}">
+    <title>最新影片下载=高清影片下载-迅雷下载</title>
+    <div th:replace="pub/head_meta"/>
+    <div th:replace="pub/head_link"/>
+    <div th:replace="pub/head_script"/>
+    <!--=====================CSS_Link===========================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index/index.css(v=${pageurl})}">
+
+    <!--=====================JS_Link===========================-->
+    <script>
+        $(function(){
+            var hr= window.location.search;
+            if(hr!=""){
+                hr = hr.substring(1,hr.length);
+                var hrefArray = hr.split("&");
+                for(var i =0;i<hrefArray.length;i++){
+                    var key = hrefArray[i].split("=")[0];
+                    var val = hrefArray[i].split("=")[1];
+                    $("#"+key+val).css({"color":"#fff","background":"#343a40"});
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.weixinshowPic').hover(function() {
+                $(this).addClass('weixinshowPic-hover');
+            }, function() {
+                $(this).removeClass('weixinshowPic-hover');
+            });
+            $('.dropdown').hover(function() {
+                $(this).addClass('dropdown-hover');
+                $(".dropdown-sub").show('slow');
+            }, function() {
+                $(this).removeClass('dropdown-hover');
+            });
+
+            updateFilmSize();
+            $(window).resize(function(){
+                updateFilmSize();
+            });
+        });
+
+
+
+        function updateFilmSize() {
+            var w = $(".film-list").width() / 6;
+            if ($(".film-list").width() < 450) {
+                w = $(".film-list").width() / 2;
+            }
+            w = parseInt(w)-10;
+            $(".film-list li").css("width", w + "px");
+
+            var w = $(".note-left").width();
+            var h = (w * 160) / 115;
+            $(".note-left").css("height", h + "px");
+        }
+    </script>
+    <!-- 代码部分end -->
+</head>
+<body>
+<!--头部-->
+<div th:replace="pub/head"/>
+<div class="container" style="margin-top: 50px;">
+    <!--滚动banner-->
+    <div th:replace="pub/ad_banner"/>
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="user-nav">
+                <a href="/xl/index.html"><div class="user-nav-title">全部分类</div></a>
+                <span th:each="list:${cataLogList}">
+                    <a th:if="${list.id == cataLogId}" th:href="@{/xl/index.html(cataLogId=${list.id})}" ><li style="color: #343a40;background: #b5b5b5;" th:text="${list.name}"></li></a>
+                    <a th:if="${list.id != cataLogId}" th:href="@{/xl/index.html(cataLogId=${list.id})}"><li th:text="${list.name}"></li></a>
+                </span>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <ul class="filter-board" th:if="${cataLogList!=null and cataLogList.size()>0}">
+                <li class="li-head">分类：</li>
+                <li th:each="list:${cataLogList}" th:class="${'li-child'+(cataLogId==list.id?' li-active':'')}" >
+                    <a th:href="@{/xl/index.html(cataLogId=${list.id})}" th:text="${list.name}"></a>
+                </li>
+            </ul>
+
+            <ul class="filter-board" th:if="${subClassList!=null and subClassList.size()>0}">
+                <li class="li-head">子分类：</li>
+                <li th:each="list:${subClassList}" th:class="${'li-child'+(subClassId==list.id?' li-active':'')}" >
+                    <a th:href="@{/xl/index.html(subClassId=${list.id},cataLogId=${cataLogId})}" th:text="${list.name}"></a>
+                </li>
+            </ul>
+
+            <ul class="filter-board" th:if="${typeList!=null and typeList.size()>0}">
+                <li class="li-head">类型：</li>
+                <li th:each="list:${typeList}" th:class="${'li-child'+(typeId==list.id?' li-active':'')}" >
+                    <a th:href="@{/xl/index.html(subClassId=${subClassId},cataLogId=${cataLogId},typeId=${list.id})}" th:text="${list.name}"></a>
+                </li>
+            </ul>
+
+            <ul class="filter-board" th:if="${locList!=null and locList.size()>0}">
+                <li class="li-head">地区：</li>
+                <li th:each="list:${locList}" th:class="${'li-child'+(locId==list.id?' li-active':'')}" >
+                    <a th:href="@{/xl/index.html(subClassId=${subClassId},cataLogId=${cataLogId},typeId=${typeId},locId=${list.id})}" th:text="${list.name}"></a>
+                </li>
+            </ul>
+
+            <ul class="filter-board" th:if="${decadeList!=null and decadeList.size()>0}">
+                <li class="li-head">年代：</li>
+                <li th:each="list:${decadeList}" th:class="${'li-child'+(onDecade==list.name?' li-active':'')}" >
+                    <a th:href="@{/xl/index.html(subClassId=${subClassId},cataLogId=${cataLogId},typeId=${typeId},locId=${locId},onDecade=${list.name})}" th:text="${list.name}"></a>
+                </li>
+            </ul>
+
+            <ul class="film-list">
+
+                <li th:each="list:${page.list}">
+                    <a th:href="@{/xl/detail.html(filmId=${list.id})}">
+                        <div  class="note-left" th:title="${list.name}"><img class="lazy rounded img-fluids" th:data-original="${list.image}" /></div>
+                    </a>
+                    <div class="film-info">
+                        <div class="info">
+                            <h2>
+                                <a class="film-info-a" th:href="@{/xl/detail.html(filmId=${list.id})}" th:title="${list.name}"
+                                   target="_blank" th:text="${list.name}">
+                                </a>
+                                <em th:text="${list.onDecade}"> </em>
+                            </h2>
+                            <em th:if="${list.evaluation>=0&&list.evaluation<2}" class="star star1"></em>
+                            <em th:if="${list.evaluation>=2&&list.evaluation<4}" class="star star2"></em>
+                            <em th:if="${list.evaluation>=4&&list.evaluation<6}" class="star star3"></em>
+                            <em th:if="${list.evaluation>=6&&list.evaluation<8}" class="star star4"></em>
+                            <em th:if="${list.evaluation>=8&&list.evaluation<=10}" class="star star5"></em>
+
+                            <p th:text="'主演:'+${list.actor}"></p>
+                            <p><i th:text="'状态:'+${list.status}"></i>&nbsp;<i th:text="'地区:'+${list.locName}"></i></p>
+                            <p><i th:text="'类型:'+${list.typeName}"></i> <i th:text="'更新:'+${#dates.format(list.updateTime,'MM-dd')}"></i></p>
+                            <br/>
+                            <span>
+                                <a th:href="@{/xl/detail.html(filmId=${list.id})}" class="watch-btn" target="_blank">观看</a>
+                                <a th:href="@{/xl/detail.html(filmId=${list.id})}" class="download-btn" target="_blank">下载</a>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul th:if="${page.size==0}" class="mlist">对不起，没有找到任何记录,<a target="_blank" href="note.html"><font color="red"><b>请您在此留言</b></font></a>，我们尽快为你添加喜欢的数据<div class="cr"></div></ul>
+            <div style="width:100%;margin: 5px auto;height: auto;overflow: hidden;">
+                <nav style="float: right;">
+                    <ul class="pagination">
+                        <li th:class="${'page-item'+(page.isFirstPage ? ' disabled':'')}">
+                            <a class="page-link" th:if="${not page.isFirstPage}" th:href="@{/xl/index.html(pageNum=${page.pageNum-1},pageSize=${page.pageSize},subClassId=${subClassId},cataLogId=${cataLogId},typeId=${typeId},locId=${locId},onDecade=${onDecade})}">上一页</a>
+                            <a class="page-link" th:if="${page.isFirstPage}" href="javascript:void(0);">上一页</a>
+                        </li>
+
+                        <li th:each="pageNo : ${#numbers.sequence(1, page.pages)}"  th:class="${'page-item '+(page.pageNum eq pageNo ? 'active':'')}">
+                            <a class="page-link" th:if="${page.pageNum eq pageNo}" href="javascript:void(0);">
+                                <span th:text="${pageNo}"></span>
+                            </a>
+
+                            <a class="page-link" th:if="${not (page.pageNum eq pageNo)}" th:href="@{/xl/index.html(pageNum=${pageNo},pageSize=${page.pageSize},subClassId=${subClassId},cataLogId=${cataLogId},typeId=${typeId},locId=${locId},onDecade=${onDecade})}">
+                                <span th:text="${pageNo}"></span>
+                            </a>
+                        </li>
+                        <li th:class="${'page-item'+(page.isLastPage ? ' disabled':'')}">
+                            <a class="page-link" th:if="${not page.isLastPage}" th:href="@{/xl/index.html(pageNum=${page.pageNum+1},pageSize=${page.pageSize},subClassId=${subClassId},cataLogId=${cataLogId},typeId=${typeId},locId=${locId},onDecade=${onDecade})}">下一页</a>
+                            <a class="page-link " th:if="${page.isLastPage}" href="javascript:void(0);">下一页</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="pub/footer"/>
+</body>
+</html>
